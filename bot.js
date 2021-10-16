@@ -32,11 +32,11 @@ client.on('ready', () => {
     const userID2 = process.env.JOHN_ID;
     const userID3 = process.env.TSAH_ID;
 
-    // Scheduling using cron, run from Monday - Friday (1-5) at 22:29:00 hours
-    let scheduledMessage = new cron.CronJob('00 29 22 * * 1-5', () =>
+    // Scheduling using cron, run from Monday - Friday (1-5) at 16:59:00 hours
+    // Cron job uses server's timezone by default UTC, changing the time in UTC
+    let scheduledMessage = new cron.CronJob('00 59 16 * * 1-5', () =>
     {
         const channel = guild.channels.cache.get(channelId);
-        channel.send("Study time! <@"+userID1.toString()+">");
         channel.send(`Study time! <@${userID1}> <@${userID2}> <@${userID3}>`);
 
     })
